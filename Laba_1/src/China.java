@@ -48,11 +48,10 @@ public class China extends JPanel{
         return atf.createTransformedShape(path);
     }
 
-    private int width,height;
-    private double maxR = 0.15, minR = 0.05;
-    private double maxX = 0.25, maxY = 0.25;
-    private double[] minX = {0.50, 0.60, 0.60, 0.50};
-    private double[] minY = {0.10, 0.20, 0.35, 0.45};
+    private final int width;
+    private final int height;
+    private final double[] minX = {0.50, 0.60, 0.60, 0.50};
+    private final double[] minY = {0.10, 0.20, 0.35, 0.45};
 
 
     //Создать флаг с шириной
@@ -73,15 +72,19 @@ public class China extends JPanel{
         g2d.fillRect(0,0,width,height);
 
         // Рисуем большой ☆
-        double ox = height*maxX, oy = height*maxY;
+        double maxX = 0.25;
+        double maxY = 0.25;
+        double ox = height* maxX, oy = height* maxY;
         g2d.setPaint(Color.YELLOW); // Цвет желтый
-        g2d.fill(createPentacle(ox,oy,height*maxR,-Math.PI/2)); // Рисуем звезду
+        double maxR = 0.15;
+        g2d.fill(createPentacle(ox,oy,height* maxR,-Math.PI/2)); // Рисуем звезду
 
         // Рисуем маленьким ★
         for(int idx =0;idx < 4;idx ++){
             double sx = minX[idx]*height, sy = minY[idx]*height;
             double theta = Math.atan2(oy-sy,ox-sx);
-            g2d.fill(createPentacle(sx,sy,height*minR,theta));
+            double minR = 0.05;
+            g2d.fill(createPentacle(sx,sy,height* minR,theta));
         }
     }
 }
