@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-7
+
         Scientist emp1 = new Junior_Scientist("Валерий", 15000, 2);
         Scientist emp2 = new Junior_Scientist("Виталий", 15000, 2);
         Scientist emp3 = new Senior_Scientist("Илья",90000, 10);
