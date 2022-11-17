@@ -30,7 +30,7 @@ public class Draw extends JFrame {
     }
 
     //Раскраска ячейки
-    public void draw_cell(Board board){
+    public void drawCell(Board board){
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 cells[i][j].draw(board.getState(i,j));

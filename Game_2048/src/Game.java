@@ -1,5 +1,7 @@
 // Точка входа в программу
 
+import javax.swing.*;
+
 public class Game {
     private int score; //Сумма всех чисел на поле
     private int size; // Размер поля
@@ -19,20 +21,19 @@ public class Game {
 
 
         while (!endOfGame) {
-
             input(); // Считываем клавишу
             logic(); // Логика
-
         }
         draw.dispose();
-        System.out.println("Ваш результат = " + score);
+        String out = "Ваш результат = " + score;
+        JOptionPane.showMessageDialog(null, out, "Конец игры", JOptionPane.INFORMATION_MESSAGE);
         System.exit(-1);
 
 
     }
 
-    public void print_board(){
-        board.print_board();
+    public void printBoard(){
+        board.printBoard();
     }
 
     // Задаём значения полей для начала игры
@@ -55,13 +56,13 @@ public class Game {
         for (int i = 0; i < size / 2; i++) {
             generateNewCell();
         }
-        draw.draw_cell(board); // Отрисовка поля
+        draw.drawCell(board); // Отрисовка поля
     }
 
     // Генерация случайной клетки на поле
     private void generateNewCell() {
         //Проверяем, что есть свободные места
-        if (!board.check_empty_cell() && !firstGeneration) {
+        if (board.checkEmptyCells() && !firstGeneration) {
             System.err.println("Невозможно генерация случайной клетки.");
             System.exit(-1);
         }
@@ -94,10 +95,8 @@ public class Game {
         // Определяем направление, в котором нужно будет произвести сдвиг
         direction = keyListener.lastDirectionKeyPressed();
 
-        //System.out.println(direction);
-        System.out.println(direction);
         // Проверка что поле пустое
-        if (!board.check_empty_cell() && direction != null){
+        if (board.checkEmptyCells() && direction != null){
             endOfGame = true;
         }
 
@@ -115,7 +114,7 @@ public class Game {
             //System.out.println(direction);
             if (shift(direction)) generateNewCell();
 
-            draw.draw_cell(board); // Отрисовка поля
+            draw.drawCell(board); // Отрисовка поля
             //board.print_board();
             keyListener.lastDirectionKeyPressedSet(Direction.AWAITING);
             direction = Direction.AWAITING;
@@ -133,11 +132,7 @@ public class Game {
 
     /**
      * Изменяет board, сдвигая все ячейки в указанном направлении,
-     * вызывая shiftRow() для каждой строки/столбца (в зависимости от направления)
-     *
-     * @param direction Направление, в котором необходимо совершить сдвиг
-     * @return Возвращает true, если сдвиг прошёл успешно (поле изменилось)
-     */
+     * вызывая shiftRow() для каждой строки/столбца (в зависимости от направления) **/
     private boolean shift(Direction direction) {
         boolean ret = false;
         switch (direction) {

@@ -1,10 +1,6 @@
 public class Board {
-    /**
-     * Состояние всех ячеек поля.
-     */
     private final int[][] board;
     private final int size;
-
 
     // Инициализирует поле и заполняет его нулями
     public Board(int size){
@@ -76,17 +72,17 @@ public class Board {
     }
 
     // Проверка, что есть свободные клетки
-    public boolean check_empty_cell(){
+    public boolean checkEmptyCells(){
         for(int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if(board[i][j] != 0) return true;
+                if(board[i][j] != 0) return false;
             }
         }
-        return false;
+        return true;
     }
 
     // Вывод поля
-    public void print_board(){
+    public void printBoard(){
         for(int i = 0; i < size; i++){
             for(int j = 0; j < size; j++){
                 System.out.print(board[i][j] + " ");

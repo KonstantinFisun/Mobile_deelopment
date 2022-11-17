@@ -2,9 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Cell extends JLabel {
-    // Координаты клетки
-//    private final int x;
-//    private final int y;
 
     public Cell() {
         super();
