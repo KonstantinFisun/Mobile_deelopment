@@ -1,4 +1,4 @@
-public class Senior_Scientist extends Scientist {
+public class Senior_Scientist extends Scientist implements Salary {
 
     public Senior_Scientist(String name, int salary, int seniority) {
         super(name, salary, seniority);

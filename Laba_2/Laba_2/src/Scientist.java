@@ -1,4 +1,4 @@
-public abstract class Scientist {
+public abstract class Scientist implements Employers {
     private int salary, seniority;
     private String name;
 
@@ -35,19 +35,19 @@ public abstract class Scientist {
     }
 
     //-----------------------------
-    abstract double countSalary();
-
+    @Override
     public String hire() {
         return "Сотрудник принят на должность";
     }
+
+    @Override
     public String fire() {
         return "Сотрудник уволен с должности";
     }
+
+    @Override
     public String replace() {
         return "Сотрудник переведен с должности";
-    }
-    public double calculate_salary() {
-        return this.countSalary();
     }
 
     //----------------------------------------
